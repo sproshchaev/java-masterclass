@@ -1,0 +1,41 @@
+# .github/workflows/test-solution.yml
+name: Test Solution
+
+on:
+  push:
+    branches: [ 'task-*' ]
+  pull_request:
+    branches: [ 'task-*' ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up JDK 25
+        uses: actions/setup-java@v4
+        with:
+          java-version: '25'
+          distribution: 'temurin'
+          cache: 'gradle'
+
+      - name: Grant execute permission
+        run: chmod +x ./gradlew
+
+      - name: Extract task name
+        id: task
+        run: |
+          BRANCH=${{ github.ref_name }}
+          TASK=$(echo "$BRANCH" | sed 's/-.*$//')
+          echo "task_name=$TASK" >> $GITHUB_OUTPUT
+
+      - name: Run tests
+        run: ./gradlew :module-01-core:${{ steps.task.outputs.task_name }}:test --no-daemon
+
+      - name: Upload test results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results-${{ github.ref_name }}
+          path: '**/build/test-results/test/*.xml'
