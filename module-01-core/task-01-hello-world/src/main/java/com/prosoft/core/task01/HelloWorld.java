@@ -18,6 +18,7 @@ public class HelloWorld {
     public String greet() {
         // TODO: напиши реализацию
         // return "";
+
         return "Hello, Java 25!";
     }
 }
