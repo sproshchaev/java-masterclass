@@ -11,6 +11,6 @@ public class HelloWorld {
      * @return приветствие
      */
     public String greet() {
-        return "_Hello, Java 25!";
+        return "Hello, Java 25!";
     }
 }

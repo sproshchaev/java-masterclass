@@ -8,18 +8,17 @@ on:
 
 jobs:
   test:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest  # или ubuntu-22.04
 
     steps:
       - uses: actions/checkout@v4
 
-      - name: Setup JDK with faster distribution
+      - name: Setup JDK
         uses: actions/setup-java@v4
         with:
           java-version: '25'
           distribution: 'temurin'
           cache: 'gradle'
-          cache-dependency-path: '**/*.gradle*'
 
       - name: Grant execute permission
         run: chmod +x ./gradlew
@@ -31,18 +30,14 @@ jobs:
           TASK=$(echo "$BRANCH" | sed 's/-.*$//')
           echo "task_name=$TASK" >> $GITHUB_OUTPUT
 
-      - name: Cache Gradle dependencies
-        uses: actions/cache@v3
-        with:
-          path: |
-            ~/.gradle/caches
-            ~/.gradle/wrapper
-          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
-          restore-keys: |
-            ${{ runner.os }}-gradle-
-
-      - name: Run tests with parallel execution
-        run: ./gradlew :module-01-core:${{ steps.task.outputs.task_name }}:test --no-daemon --parallel --build-cache
+      - name: Run tests with optimized Gradle
+        run: |
+          ./gradlew :module-01-core:${{ steps.task.outputs.task_name }}:test \
+            --no-daemon \
+            --parallel \
+            --build-cache \
+            --configuration-cache \
+            --rerun-tasks
 
       - name: Upload test results
         if: always()
