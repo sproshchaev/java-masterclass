@@ -1,7 +1,10 @@
 # Java Masterclass 2025
 
-### КАК ПРОВЕРИТЬ
+# 1. ЗАДАНИЯ
+1. Написать строку "Hello, Java 25!" (тестовое) [HelloWorld.java](module-01-core/task-01-hello-world/src/main/java/com/prosoft/core/task01/HelloWorld.java)  
 
+# 2. НАСТРОЙКИ
+### 2.1. КАК ПРОВЕРИТЬ ЛОКАЛЬНО В IDE
 1. Запускается `public class HelloWorld {` из IDE
 2. Запускается тесты `class HelloWorldTest {` из IDE
 3. Проверка запуска тестов из командной строки: 
@@ -13,8 +16,7 @@
 BUILD SUCCESSFUL in ...ms
 ```
 
-### КАК ПРОВЕРИТЬ В GitHub
-
+### 2.2. КАК ПРОВЕРИТЬ В GitHub
 1. Запушь этот файл
 2. Создай ветку task-01-hello-world-test
 3. Пушни → GitHub
