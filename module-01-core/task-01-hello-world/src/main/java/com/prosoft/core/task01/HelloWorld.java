@@ -6,6 +6,11 @@ package com.prosoft.core.task01;
  */
 public class HelloWorld {
 
+    static void main() {
+        HelloWorld helloWorld = new HelloWorld();
+        System.out.println(helloWorld.greet());
+    }
+
     /**
      * Верни строку: "Hello, Java 25!"
      * @return приветствие
