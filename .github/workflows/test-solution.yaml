@@ -20,6 +20,22 @@ jobs:
           distribution: 'temurin'
           cache: 'gradle'
 
+      - name: Cache Gradle more aggressively
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+            ~/.gradle/configuration-cache
+            ~/.gradle/build-cache
+            ~/.gradle/daemon
+            ~/.gradle/native
+            .gradle
+            **/build
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties', '**/src/**/*.java') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-
+
       - name: Grant execute permission
         run: chmod +x ./gradlew
 
