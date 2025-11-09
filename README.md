@@ -18,7 +18,14 @@ BUILD SUCCESSFUL in ...ms
 
 ### 2.2. КАК ПРОВЕРИТЬ В GitHub
 1. Запушь этот файл
-2. Создай ветку task-01-hello-world-test
-3. Пушни → GitHub
-4. Зади на GitHub → Actions → Test Solution
-5. Если зелёный — всё работает!
+
+2. Создай ветку - имя ветки должно обязательно начинаться с "task-", примеры: 
+```angular2html
+task-01-hello-world-test
+task-02-calculator-test
+и тп
+```
+3. Выполни задание
+4. Пушни выполненное задание из ветки "task-..." на GitHub
+5. Зади на GitHub → Actions → Test Solution
+6. Если зелёный — всё работает!
