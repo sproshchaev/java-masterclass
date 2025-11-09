@@ -1,4 +1,4 @@
-# Java Masterclass 2025
+# Java Masterclass
 
 # 1. ЗАДАНИЯ
 1. Написать строку "Hello, Java 25!" (тестовое) [HelloWorld.java](module-01-core/task-01-hello-world/src/main/java/com/prosoft/core/task01/HelloWorld.java)  
